@@ -23,9 +23,8 @@ export default {
     }
     // expose to template
     return {
-        routeTo,
-        router,
-        favourites: computed(() => store.state.favourites),
+      routeTo,
+      favourites: computed(() => store.state.favourites),
     };
   },
 };

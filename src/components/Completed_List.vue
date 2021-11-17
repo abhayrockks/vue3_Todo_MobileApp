@@ -1,17 +1,12 @@
 <template>
-  <div class="list-heading"><b> Todo List</b></div>
+<div v-if="completedList && completedList.length">
+  <div class="list-heading"><b> Completed List</b></div>
   <div>
-    <div v-for="(item, index) in todoList" :key="index">
+    <div v-for="(item, index) in completedList" :key="index">
       <p class="items">
         <span class="list-font">{{ item }}</span>
-        <span class="action-class" @click="editItem(index)"
-          ><i class="glyphicon glyphicon-edit"></i
-        ></span>
         <span class="action-class" @click="removeItem(index, item)"
           ><i class="glyphicon glyphicon-minus"></i
-        ></span>
-        <span class="action-class" @click="completeItem(index, item)"
-          ><i class="glyphicon glyphicon-check"></i
         ></span>
         <span v-if="favourites.includes(item)" class="action-class" @click="removeFromFavourite(item)"
           ><i class="glyphicon glyphicon-star"></i
@@ -22,6 +17,7 @@
       </p>
     </div>
   </div>
+</div>
 </template>
 
 <script>
@@ -30,30 +26,19 @@ import { useStore } from 'vuex';
 
 export default {
   props: {
-    todoList: Array,
+    completedList: Array,
   },
   setup(props, context) {
     const store = useStore()
 
     function removeItem(index, item) {
       let obj = {index: index, item: item}
-      context.emit("removeItemList", obj);
-    }
-
-    function editItem(index) {
-      context.emit("editItemList", index);
-    }
-
-    function completeItem(index, item) {
-      let obj = {index: index, item: item}
-      context.emit("completeItemList", obj);
+      context.emit("removeCompleteItemList", obj);
     }
 
     // expose to template
     return {
       removeItem,
-      editItem,
-      completeItem,
       favourites: computed(() => store.state.favourites),
       removeFromFavourite: (payload) => store.dispatch('removeFromFavourite', payload),
       addToFavourite: (payload) => store.dispatch('addToFavourite', payload)
