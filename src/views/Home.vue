@@ -120,7 +120,7 @@ export default {
 .route-heading {
   font-size: 20px;
   float: right;
-  margin-right: 80px;
+  margin-right: 10px;
   cursor: pointer;
 }
 .list-container {
@@ -128,6 +128,6 @@ export default {
 }
 .input-box {
   margin-top: 60px;
-  margin-left: 165px;
+  margin-left: 5px;
 }
 </style>

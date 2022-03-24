@@ -1,6 +1,6 @@
 <template>
 <div class="route-heading" @click="routeTo">Home</div>
-  <div class="list-heading"><b>Favourite Todo List</b></div>
+  <div class="list-heading"><b>Favourites</b></div>
   <div>
     <div v-for="(item, index) in favourites" :key="index">
       <p class="items">{{ item }}</p>
@@ -44,7 +44,7 @@ export default {
   margin-top: 20px;
   font-size: 20px;
   float: right;
-  margin-right: 80px;
+  margin-right: 10px;
   cursor: pointer;
 }
 </style>

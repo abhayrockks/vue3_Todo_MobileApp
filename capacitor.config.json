@@ -1,0 +1,6 @@
+{
+  "appId": "com.example.vue3todo",
+  "appName": "vue3todo",
+  "webDir": "dist",
+  "bundledWebRuntime": false
+}
