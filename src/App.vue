@@ -1,6 +1,31 @@
 <template>
-  <router-view/>
+  <router-view />
 </template>
+
+<script>
+import { LocalNotifications } from "@capacitor/local-notifications";
+import { onMounted } from "vue";
+export default {
+  setup() {
+    onMounted(async () => {
+      await LocalNotifications.requestPermissions();
+
+      LocalNotifications.schedule({
+        notifications: [
+          {
+            title: "Title",
+            body: "Body",
+            id: 1,
+            schedule: { at: new Date(Date.now() + 1000 * 5) },
+            actionTypeId: "",
+            extra: null,
+          },
+        ],
+      });
+    });
+  },
+};
+</script>
 
 <style>
 #app {
